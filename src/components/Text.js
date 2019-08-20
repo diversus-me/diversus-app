@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { Text, StyleSheet } from "react-native";
+import React, {Component} from 'react';
+import {Text, StyleSheet} from 'react-native';
 
-import { theme } from "../config";
+import {theme} from '../config';
 
 export default class Typography extends Component {
   render() {
@@ -51,12 +51,12 @@ export default class Typography extends Component {
       body && styles.body,
       caption && styles.caption,
       small && styles.small,
-      size && { fontSize: size },
-      transform && { textTransform: transform },
-      align && { textAlign: align },
-      height && { lineHeight: height },
-      spacing && { letterSpacing: spacing },
-      weight && { fontWeight: weight },
+      size && {fontSize: size},
+      transform && {textTransform: transform},
+      align && {textAlign: align},
+      height && {lineHeight: height},
+      spacing && {letterSpacing: spacing},
+      weight && {fontWeight: weight},
       regular && styles.regular,
       bold && styles.bold,
       semibold && styles.semibold,
@@ -65,7 +65,7 @@ export default class Typography extends Component {
       center && styles.center,
       right && styles.right,
       color && styles[color],
-      color && !styles[color] && { color },
+      color && !styles[color] && {color},
       // color shortcuts
       accent && styles.accent,
       primary && styles.primary,
@@ -75,7 +75,7 @@ export default class Typography extends Component {
       white && styles.white,
       gray && styles.gray,
       gray2 && styles.gray2,
-      style // rewrite predefined styles
+      style, // rewrite predefined styles
     ];
 
     return (
@@ -89,43 +89,43 @@ export default class Typography extends Component {
 const styles = StyleSheet.create({
   // default style
   text: {
-    fontFamily: "Rubik-Regular",
+    fontFamily: 'Raleway-Regular',
     fontSize: theme.sizes.font,
-    color: theme.colors.black
+    color: theme.colors.black,
   },
   // variations
   regular: {
-    fontFamily: "Rubik-Regular",
-    fontWeight: "normal"
+    fontFamily: 'Raleway-Regular',
+    fontWeight: 'normal',
   },
   bold: {
-    fontFamily: "Rubik-Bold",
-    fontWeight: "bold"
+    fontFamily: 'Raleway-Bold',
+    fontWeight: 'bold',
   },
   semibold: {
-    fontFamily: "Rubik-Medium",
-    fontWeight: "500"
+    fontFamily: 'Raleway-Medium',
+    fontWeight: '500',
   },
   medium: {
-    fontFamily: "Rubik-Medium",
-    fontWeight: "500"
+    fontFamily: 'Raleway-Medium',
+    fontWeight: '500',
   },
   light: {
-    fontFamily: "Rubik-Light",
-    fontWeight: "200"
+    fontFamily: 'Raleway-Light',
+    fontWeight: '200',
   },
   // position
-  center: { textAlign: "center" },
-  right: { textAlign: "right" },
+  center: {textAlign: 'center'},
+  right: {textAlign: 'right'},
   // colors
-  accent: { color: theme.colors.accent },
-  primary: { color: theme.colors.primary },
-  secondary: { color: theme.colors.secondary },
-  tertiary: { color: theme.colors.tertiary },
-  black: { color: theme.colors.black },
-  white: { color: theme.colors.white },
-  gray: { color: theme.colors.gray },
-  gray2: { color: theme.colors.gray2 },
+  accent: {color: theme.colors.accent},
+  primary: {color: theme.colors.primary},
+  secondary: {color: theme.colors.secondary},
+  tertiary: {color: theme.colors.tertiary},
+  black: {color: theme.colors.black},
+  white: {color: theme.colors.white},
+  gray: {color: theme.colors.gray},
+  gray2: {color: theme.colors.gray2},
   // fonts
   h1: theme.fonts.h1,
   h2: theme.fonts.h2,
@@ -133,5 +133,5 @@ const styles = StyleSheet.create({
   title: theme.fonts.title,
   body: theme.fonts.body,
   caption: theme.fonts.caption,
-  small: theme.fonts.small
+  small: theme.fonts.small,
 });
