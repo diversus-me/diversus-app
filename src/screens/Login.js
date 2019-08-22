@@ -5,11 +5,13 @@ import {
   Image,
   Keyboard,
   KeyboardAvoidingView,
-  StyleSheet,
 } from 'react-native';
 
-import {Button, Block, Input, Text} from '../components';
+import {Button, Block, Input, Text} from '../components/shared';
+import {NavigationServices} from '../navigation';
 import {theme} from '../config';
+
+import styles from './styles/login.styles';
 
 const BACKGROUND_IMAGE = require('../../assets/images/welcome-bg.png');
 const APP_LOGO = require('../../assets/images/diversus-logo.png');
@@ -39,7 +41,7 @@ export default class Login extends Component {
     return (
       <KeyboardAvoidingView style={styles.login} behavior="padding">
         <ImageBackground style={styles.login} source={BACKGROUND_IMAGE}>
-          <SafeAreaView style={{flex: 1}}>
+          <SafeAreaView style={styles.loginContent}>
             <Block center>
               <Block
                 flex={false}
@@ -64,7 +66,10 @@ export default class Login extends Component {
                   placeholderTextColor={theme.colors.primary}
                 />
 
-                <Button style={styles.button} color={theme.colors.primary}>
+                <Button
+                  style={styles.button}
+                  color={theme.colors.primary}
+                  onPress={() => NavigationServices.navigate('Home')}>
                   <Text regular white center size={theme.sizes.base}>
                     Login
                   </Text>
@@ -77,39 +82,3 @@ export default class Login extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  login: {
-    flex: 1,
-  },
-  logo: {
-    width: 110,
-    height: 110,
-    borderWidth: 1,
-    borderRadius: 55,
-    shadowColor: theme.colors.black,
-    shadowOpacity: 0.11,
-    shadowOffset: {width: 0, height: 2},
-    shadowRadius: 4,
-    elevation: 2,
-  },
-  logoImage: {height: 48, width: 32},
-  button: {
-    marginTop: 10,
-    width: 200,
-    height: 40,
-    borderRadius: 10,
-  },
-  input: {
-    width: 278,
-    borderRadius: 0,
-    borderWidth: 0,
-    borderBottomColor: theme.colors.primary,
-    borderBottomWidth: 1,
-    marginBottom: 10,
-    textAlign: 'center',
-  },
-  hasErrors: {
-    borderBottomColor: theme.colors.accent,
-  },
-});

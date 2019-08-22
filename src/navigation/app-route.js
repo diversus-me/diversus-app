@@ -2,16 +2,17 @@ import React from 'react';
 import {createAppContainer, createStackNavigator} from 'react-navigation';
 
 import {NavigationServices} from './index';
-import {Welcome} from '../screens';
+import {Login, Home} from '../screens';
 
-const AuthStackContainer = createAppContainer(
+const AppContainer = createAppContainer(
   createStackNavigator({
-    Welcome,
+    // Login,
+    Home,
   }),
 );
 
-export default (AuthStack = () => (
-  <AuthStackContainer
+const AppStack = () => (
+  <AppContainer
     ref={v => {
       if (v) {
         NavigationServices.setTopLevelNavigator(v);
@@ -19,4 +20,6 @@ export default (AuthStack = () => (
     }}
     uriPrefix="/"
   />
-));
+);
+
+export default AppStack;

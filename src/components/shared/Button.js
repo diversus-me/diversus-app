@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {theme} from '../config';
+import {theme} from '../../config';
 
 class Button extends Component {
   render() {

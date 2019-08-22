@@ -1,4 +1,6 @@
 import React from 'react';
-import {AuthStack} from './navigation';
+import {AppStack} from './navigation';
 
-export default (componentName = props => <AuthStack />);
+const app = props => <AppStack />;
+
+export default app;

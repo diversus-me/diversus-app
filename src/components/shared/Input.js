@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
 import {StyleSheet, TextInput} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 
-import Text from './Text';
 import Block from './Block';
-import Button from './Button';
-import {theme} from '../config';
+import {theme} from '../../config';
 
 export default class Input extends Component {
   render() {

@@ -4,14 +4,16 @@ const colors = {
   secondary: '#3398DB',
   black: '#000000',
   white: '#FFFFFF',
+  white2: '#F5F7FB',
   gray: '#7E7E7E',
+  gray2: '#E7E8EB',
 };
 
 const sizes = {
   // global sizes
   base: 16,
   font: 14,
-  radius: 6,
+  radius: 7,
   padding: 25,
 
   // font sizes

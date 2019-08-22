@@ -1,5 +1,5 @@
-import AuthStack from './auth-route';
+import AppStack from './app-route';
 
 import NavigationServices from './navigation-services';
 
-export {AuthStack, NavigationServices};
+export {AppStack, NavigationServices};
