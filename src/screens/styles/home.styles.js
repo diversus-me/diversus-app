@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
   tabs: {
     borderBottomColor: theme.colors.gray,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    marginVertical: theme.sizes.base * 2.5,
+    marginTop: theme.sizes.base * 2.5,
+    marginBottom: theme.sizes.base,
   },
   tab: {
     width: (width - 36) / 3,

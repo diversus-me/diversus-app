@@ -191,10 +191,10 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   shadow: {
-    shadowColor: theme.colors.black,
+    shadowColor: theme.colors.primary,
     shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.1,
-    shadowRadius: 13,
+    shadowOpacity: 0.22,
+    shadowRadius: 5,
     elevation: 2,
   },
   accent: {backgroundColor: theme.colors.accent},

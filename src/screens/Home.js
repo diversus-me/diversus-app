@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {SafeAreaView} from 'react-navigation';
 import {Image, TouchableOpacity} from 'react-native';
 
-import {Block, Text} from '../components/shared';
+import {Block, Text, Card} from '../components/shared';
 import {theme} from '../config';
 
 import styles from './styles/home.styles';
@@ -10,6 +10,7 @@ import SearchInput from '../components/search-input/search-input';
 
 //Assets
 const MENU_ICON = require('../../assets/images/menu.png');
+const USER_ICON = require('../../assets/images/user.png');
 
 class Home extends Component {
   static navigationOptions = {
@@ -72,6 +73,40 @@ class Home extends Component {
 
           <Block flex={false} space="between" row style={styles.tabs}>
             {tabs.map(tab => this.renderTab(tab))}
+          </Block>
+
+          <Block flex={false}>
+            <Card flex={false} shadow>
+              <Block flex={false} row>
+                <Block flex={0.4} alignSelf="center">
+                  <Text primary>Image</Text>
+                </Block>
+                <Block flex={0.6}>
+                  <Text size={14} primary bold numuberOfLines={3}>
+                    Title of the flower and and this ist the second and and
+                    third line…
+                  </Text>
+                  <Text
+                    size={12}
+                    align="right"
+                    secondary
+                    style={{marginTop: 20, marginBottom: 10}}>
+                    133 Petals
+                  </Text>
+                  <Block flex={false} row space="between">
+                    <Block flex={false} row>
+                      <Image
+                        source={USER_ICON}
+                        // style={{width: 40, height: 40}}
+                      />
+                    </Block>
+                    <Text primary style={{opacity: 0.5}}>
+                      Jul 13, 2019
+                    </Text>
+                  </Block>
+                </Block>
+              </Block>
+            </Card>
           </Block>
         </Block>
       </SafeAreaView>
