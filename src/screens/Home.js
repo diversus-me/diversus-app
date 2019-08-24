@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 import {SafeAreaView} from 'react-navigation';
-import {Image, TouchableOpacity} from 'react-native';
+import {FlatList, Image, TouchableOpacity} from 'react-native';
 
 import {Block, Text, Card} from '../components/shared';
-import {theme} from '../config';
+import {theme, mocks} from '../config';
 
 import styles from './styles/home.styles';
 import SearchInput from '../components/search-input/search-input';
 
 //Assets
 const MENU_ICON = require('../../assets/images/menu.png');
-const USER_ICON = require('../../assets/images/user.png');
+const USER_ICON = require('../../assets/users/user1.jpg');
 
 class Home extends Component {
   static navigationOptions = {
@@ -50,6 +50,182 @@ class Home extends Component {
     );
   }
 
+  renderCard(item) {
+    return (
+      <Card flex={false} shadow>
+        <Block flex={false} row>
+          <Block flex={0.4} middle>
+            <Block
+              style={{
+                width: 52,
+                height: 52,
+                marginLeft: 26,
+              }}
+              flex={false}>
+              <Image
+                source={item.connects[0].image}
+                style={{
+                  width: 52,
+                  height: 52,
+                  borderRadius: 52 / 2,
+                  borderWidth: 1,
+                  resizeMode: 'cover',
+                  borderColor: theme.colors.primary,
+                }}
+              />
+
+              {item.connects.map((connect, index) => {
+                let viewStyle = {position: 'absolute'};
+
+                switch (index) {
+                  case 1: {
+                    viewStyle.left = 15;
+                    viewStyle.top = -32;
+                    break;
+                  }
+                  case 2: {
+                    viewStyle.right = -14;
+                    viewStyle.top = -25;
+                    break;
+                  }
+                  case 3: {
+                    viewStyle.right = -28;
+                    viewStyle.top = 1;
+                    break;
+                  }
+                  case 4: {
+                    viewStyle.left = -14;
+                    viewStyle.top = -25;
+                    break;
+                  }
+                  case 5: {
+                    viewStyle.left = -28;
+                    viewStyle.top = 1;
+                    break;
+                  }
+                  case 6: {
+                    viewStyle.left = 15;
+                    viewStyle.top = -32;
+                    break;
+                  }
+                  case 7: {
+                    viewStyle.left = -14;
+                    viewStyle.bottom = -25;
+                    break;
+                  }
+                  case 8: {
+                    viewStyle.left = -28;
+                    viewStyle.bottom = 1;
+                    break;
+                  }
+                  case 9: {
+                    viewStyle.right = -14;
+                    viewStyle.bottom = -25;
+                    break;
+                  }
+                  case 10: {
+                    viewStyle.right = -28;
+                    viewStyle.bottom = 1;
+                    break;
+                  }
+                  default: {
+                    viewStyle.left = 15;
+                    viewStyle.bottom = -32;
+                  }
+                }
+
+                let imageStyle = {
+                  borderColor: theme.colors.green,
+                };
+
+                switch (connect.color) {
+                  case 'red': {
+                    imageStyle.borderColor = theme.colors.accent;
+                    break;
+                  }
+                  case 'green': {
+                    imageStyle.borderColor = theme.colors.green;
+                    break;
+                  }
+                  case 'blue': {
+                    imageStyle.borderColor = theme.colors.secondary;
+                    break;
+                  }
+                  case 'gray': {
+                    imageStyle.borderColor = theme.colors.gray;
+                    break;
+                  }
+                  default: {
+                    imageStyle.borderColor = theme.colors.green;
+                  }
+                }
+
+                return (
+                  <Block key={`${index}`} flex={false} style={viewStyle}>
+                    <Image
+                      source={connect.image}
+                      style={[styles.connectImageStyle, imageStyle]}
+                    />
+                  </Block>
+                );
+              })}
+            </Block>
+          </Block>
+
+          <Block flex={0.6}>
+            <Text size={14} primary bold numuberOfLines={3}>
+              {item.title}
+            </Text>
+            <Text
+              size={12}
+              align="right"
+              secondary
+              style={{marginTop: 20, marginBottom: 10}}>
+              {item.petals}
+            </Text>
+            <Block flex={false} row center space="between">
+              <Block flex={false} row center>
+                <Image
+                  source={item.userImage}
+                  style={{width: 28, height: 28, borderRadius: 28 / 2}}
+                />
+
+                <Text primary style={{paddingLeft: 5}}>
+                  {item.userName}
+                </Text>
+              </Block>
+              <Text
+                primary
+                style={{
+                  opacity: 0.5,
+                  fontFamily: 'system font',
+                }}>
+                {item.date}
+              </Text>
+            </Block>
+          </Block>
+        </Block>
+      </Card>
+    );
+  }
+
+  renderUserCards() {
+    return (
+      <Block>
+        <FlatList
+          contentContainerStyle={{
+            paddingTop: theme.sizes.base,
+            paddingBottom: 1,
+          }}
+          showsVerticalScrollIndicator={false}
+          data={mocks.userData}
+          keyExtractor={(item, index) => `${index}`}
+          renderItem={({item}) => this.renderCard(item)}
+        />
+      </Block>
+    );
+  }
+
   render() {
     const {searchText} = this.state;
     const tabs = ['All', 'My Flowers', 'Popular'];
@@ -75,39 +251,7 @@ class Home extends Component {
             {tabs.map(tab => this.renderTab(tab))}
           </Block>
 
-          <Block flex={false}>
-            <Card flex={false} shadow>
-              <Block flex={false} row>
-                <Block flex={0.4} alignSelf="center">
-                  <Text primary>Image</Text>
-                </Block>
-                <Block flex={0.6}>
-                  <Text size={14} primary bold numuberOfLines={3}>
-                    Title of the flower and and this ist the second and and
-                    third line…
-                  </Text>
-                  <Text
-                    size={12}
-                    align="right"
-                    secondary
-                    style={{marginTop: 20, marginBottom: 10}}>
-                    133 Petals
-                  </Text>
-                  <Block flex={false} row space="between">
-                    <Block flex={false} row>
-                      <Image
-                        source={USER_ICON}
-                        // style={{width: 40, height: 40}}
-                      />
-                    </Block>
-                    <Text primary style={{opacity: 0.5}}>
-                      Jul 13, 2019
-                    </Text>
-                  </Block>
-                </Block>
-              </Block>
-            </Card>
-          </Block>
+          {this.renderUserCards()}
         </Block>
       </SafeAreaView>
     );

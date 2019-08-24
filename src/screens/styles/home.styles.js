@@ -16,11 +16,18 @@ const styles = StyleSheet.create({
     borderBottomColor: theme.colors.gray,
     borderBottomWidth: StyleSheet.hairlineWidth,
     marginTop: theme.sizes.base * 2.5,
-    marginBottom: theme.sizes.base,
+    // marginBottom: theme.sizes.base,
   },
   tab: {
     width: (width - 36) / 3,
     paddingBottom: theme.sizes.font,
+  },
+  connectImageStyle: {
+    width: 23,
+    height: 23,
+    borderRadius: 23 / 2,
+    borderWidth: 1,
+    resizeMode: 'cover',
   },
 });
 
