@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {SafeAreaView} from 'react-navigation';
-import {FlatList, Image, TouchableOpacity} from 'react-native';
+import {View, FlatList, Image, TouchableOpacity} from 'react-native';
+
+import ActionButton from '../components/action-button/action-button';
+import Icon from 'react-native-vector-icons/Feather';
 
 import {Block, Text, Card} from '../components/shared';
 import {theme, mocks} from '../config';
@@ -10,7 +13,6 @@ import SearchInput from '../components/search-input/search-input';
 
 //Assets
 const MENU_ICON = require('../../assets/images/menu.png');
-const USER_ICON = require('../../assets/users/user1.jpg');
 
 class Home extends Component {
   static navigationOptions = {
@@ -227,11 +229,11 @@ class Home extends Component {
   }
 
   render() {
-    const {searchText} = this.state;
+    const {searchText, active} = this.state;
     const tabs = ['All', 'My Flowers', 'Popular'];
     return (
       <SafeAreaView style={styles.container}>
-        <Block padding={[theme.sizes.base, theme.sizes.base]}>
+        <Block flex={1} padding={[0, theme.sizes.base]}>
           <Block flex={false}>
             <Image
               source={MENU_ICON}
@@ -251,7 +253,21 @@ class Home extends Component {
             {tabs.map(tab => this.renderTab(tab))}
           </Block>
 
-          {this.renderUserCards()}
+          {active === 'All' ? (
+            this.renderUserCards()
+          ) : (
+            <Block flex={1} center middle>
+              <Text primary h1>
+                Comming Soon...
+              </Text>
+            </Block>
+          )}
+
+          <ActionButton
+            bgColor="red"
+            position="right"
+            buttonColor={theme.colors.primary}
+          />
         </Block>
       </SafeAreaView>
     );

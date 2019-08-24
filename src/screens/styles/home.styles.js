@@ -29,6 +29,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     resizeMode: 'cover',
   },
+  actionButtonIcon: {
+    fontSize: 20,
+    height: 22,
+    color: 'white',
+  },
 });
 
 export default styles;
