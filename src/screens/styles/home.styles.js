@@ -6,17 +6,17 @@ const {width} = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.white2,
+    backgroundColor: theme.colors.white,
   },
   active: {
     borderBottomColor: theme.colors.primary,
     borderBottomWidth: 3,
+    marginBottom: -3,
   },
   tabs: {
-    borderBottomColor: theme.colors.gray,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    marginTop: theme.sizes.base * 2.5,
-    // marginBottom: theme.sizes.base,
+    borderBottomColor: theme.colors.gray3,
+    borderBottomWidth: 3,
+    marginTop: theme.sizes.base,
   },
   tab: {
     width: (width - 36) / 3,

@@ -19,9 +19,7 @@ export default class Card extends Component {
 
 export const styles = StyleSheet.create({
   card: {
-    borderRadius: theme.sizes.radius,
     paddingVertical: 13,
     paddingHorizontal: 19,
-    marginBottom: 9,
   },
 });

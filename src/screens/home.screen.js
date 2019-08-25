@@ -1,18 +1,15 @@
 import React, {Component} from 'react';
 import {SafeAreaView} from 'react-navigation';
-import {View, FlatList, Image, TouchableOpacity} from 'react-native';
+import {FlatList, Image, TouchableOpacity} from 'react-native';
 
 import ActionButton from '../components/action-button/action-button';
-import Icon from 'react-native-vector-icons/Feather';
 
 import {Block, Text, Card} from '../components/shared';
 import {theme, mocks} from '../config';
 
 import styles from './styles/home.styles';
 import SearchInput from '../components/search-input/search-input';
-
-//Assets
-const MENU_ICON = require('../../assets/images/menu.png');
+import Header from '../components/header/header';
 
 class Home extends Component {
   static navigationOptions = {
@@ -54,7 +51,7 @@ class Home extends Component {
 
   renderCard(item) {
     return (
-      <Card flex={false} shadow>
+      <Card flex={false}>
         <Block flex={false} row>
           <Block flex={0.4} middle>
             <Block
@@ -207,6 +204,15 @@ class Home extends Component {
             </Block>
           </Block>
         </Block>
+
+        <Block
+          flex={false}
+          style={{
+            borderBottomWidth: 1,
+            borderBottomColor: theme.colors.gray2,
+            marginTop: 20,
+          }}
+        />
       </Card>
     );
   }
@@ -233,21 +239,8 @@ class Home extends Component {
     const tabs = ['All', 'My Flowers', 'Popular'];
     return (
       <SafeAreaView style={styles.container}>
-        <Block flex={1} padding={[0, theme.sizes.base]}>
-          <Block flex={false}>
-            <Image
-              source={MENU_ICON}
-              resizeMode="contain"
-              style={{width: 20, height: 20}}
-            />
-          </Block>
-
-          <Block flex={false} padding={[theme.sizes.base, 0]}>
-            <SearchInput
-              onChangeText={text => this.setState({searchText: text})}
-              value={searchText}
-            />
-          </Block>
+        <Block flex={1}>
+          <Header />
 
           <Block flex={false} space="between" row style={styles.tabs}>
             {tabs.map(tab => this.renderTab(tab))}
